@@ -16,10 +16,10 @@ import wca
 import wgov
 import yahoo
 
-CONFIGBASE = os.environ.get("HOME", "/tmp") + "/.weewxapp/config/"
-CACHEBASE = os.environ.get("HOME", "/tmp") + "/.weewxapp/cache/"
+CONFIGBASE = os.environ.get("HOME", "/tmp") + "/.config/weewxapp/"
+CACHEBASE = os.environ.get("HOME", "/tmp") + "/.cache/weewxapp/"
 # TODO: set this to /usr/share/weewxapp/
-APPBASE = os.environ.get("HOME", "/tmp") + "/weewxapp/"
+APPBASE = os.environ.get("HOME", "/tmp") + "/weeWXWeatherApp4Gtk/"
 
 HEADERS = {}
 HEADERS['User-Agent'] = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
@@ -999,14 +999,28 @@ def getStats(iw):
     html += "</td><td style='text-align:right'><i style='font-size:" + iw
     html += "pt;' class='flaticon-temperature'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + str(float(iw) * 1.4) + "px;' class='wi wi-raindrop'></i></td><td>" + bits[15] + bits[60] + "</td><td>" + convert(bits[16])
-    html += "</td><td style='text-align:right;'>" + convert(bits[14]) + "</td><td style='text-align:right;'>" + bits[13] + bits[60] + "</td><td style='text-align:right'><i style='font-size:" + str(float(iw) * 1.4) + "pt;' class='wi wi-raindrop'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + str(float(iw) * 1.4)
+    html += "px;' class='wi wi-raindrop'></i></td><td>" + bits[15] + bits[60]
+    html += "</td><td>" + convert(bits[16])
+    html += "</td><td style='text-align:right;'>" + convert(bits[14])
+    html += "</td><td style='text-align:right;'>" + bits[13] + bits[60]
+    html += "</td><td style='text-align:right'><i style='font-size:" + str(float(iw) * 1.4)
+    html += "pt;' class='wi wi-raindrop'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "pt;' class='wi wi-humidity'></i></td><td>" + bits[9] + bits[64] + "</td><td>" + convert(bits[10])
-    html += "</td><td style='text-align:right;'>" + convert(bits[8]) + "</td><td style='text-align:right;'>" + bits[6] + bits[64] + "</td><td style='text-align:right'><i style='font-size:" + iw + "pt;' class='wi wi-humidity'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw
+    html += "pt;' class='wi wi-humidity'></i></td><td>" + bits[9] + bits[64]
+    html += "</td><td>" + convert(bits[10])
+    html += "</td><td style='text-align:right;'>" + convert(bits[8])
+    html += "</td><td style='text-align:right;'>" + bits[6] + bits[64]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "pt;' class='wi wi-humidity'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "pt;' class='wi wi-barometer'></i></td><td>" + bits[39] + bits[63] + "</td><td>" + convert(bits[40])
-    html += "</td><td style='text-align:right;'>" + convert(bits[42]) + "</td><td style='text-align:right;'>" + bits[41] + bits[63] + "</td><td style='text-align:right'><i style='font-size:" + iw + "pt;' class='wi wi-barometer'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw + "pt;' class='wi wi-barometer'></i></td><td>"
+    html += bits[39] + bits[63] + "</td><td>" + convert(bits[40])
+    html += "</td><td style='text-align:right;'>" + convert(bits[42])
+    html += "</td><td style='text-align:right;'>" + bits[41] + bits[63]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "pt;' class='wi wi-barometer'></i></td></tr>"
 
     if get_string('indoor_readings', '0') == "1":
         html += "<tr><td><i style='font-size:" + iw + "pt;' class='flaticon-home-page'></i></td><td>" + bits[164] + bits[60] + "</td><td>" + convert(bits[165])
