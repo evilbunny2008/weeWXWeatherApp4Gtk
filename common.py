@@ -1023,15 +1023,30 @@ def getStats(iw):
     html += "pt;' class='wi wi-barometer'></i></td></tr>"
 
     if get_string('indoor_readings', '0') == "1":
-        html += "<tr><td><i style='font-size:" + iw + "pt;' class='flaticon-home-page'></i></td><td>" + bits[164] + bits[60] + "</td><td>" + convert(bits[165])
-        html += "</td><td style='text-align:right;'>" + convert(bits[163]) + "</td><td style='text-align:right;'>" + bits[162] + bits[60] + "</td><td style='text-align:right'><i style='font-size:" + iw + "pt;' class='flaticon-home-page'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "pt;' class='flaticon-home-page'></i></td><td>" + bits[164] + bits[60]
+        html += "</td><td>" + convert(bits[165])
+        html += "</td><td style='text-align:right;'>" + convert(bits[163])
+        html += "</td><td style='text-align:right;'>" + bits[162] + bits[60]
+        html += "</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "pt;' class='flaticon-home-page'></i></td></tr>"
 
-        html += "<tr><td><i style='font-size:" + iw + "pt;' class='flaticon-home-page'></i></td><td>" + bits[169] + bits[64] + "</td><td>" + convert(bits[170])
-        html += "</td><td style='text-align:right;'>" + convert(bits[168]) + "</td><td style='text-align:right;'>" + bits[167] + bits[64] + "</td><td style='text-align:right'><i style='font-size:" + iw + "pt;' class='flaticon-home-page'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "pt;' class='flaticon-home-page'></i></td><td>" + bits[169] + bits[64]
+        html += "</td><td>" + convert(bits[170])
+        html += "</td><td style='text-align:right;'>" + convert(bits[168])
+        html += "</td><td style='text-align:right;'>" + bits[167] + bits[64]
+        html += "</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "pt;' class='flaticon-home-page'></i></td></tr>"
 
     if len(bits) > 205 and bits[205] != "":
-        html += "<tr><td><i style='font-size:" + iw + "pt;' class='flaticon-women-sunglasses'></i></td><td>" + bits[205] + "UVI</td><td>" + convert(bits[206])
-        html += "</td><td style='text-align:right;'>" + convert(bits[208]) + "</td><td style='text-align:right;'>" + bits[207] + "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw + "pt;' class='flaticon-women-sunglasses'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "pt;' class='flaticon-women-sunglasses'></i></td><td>" + bits[205] + "UVI</td><td>"
+        html += convert(bits[206])
+        html += "</td><td style='text-align:right;'>" + convert(bits[208])
+        html += "</td><td style='text-align:right;'>" + bits[207]
+        html += "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "pt;' class='flaticon-women-sunglasses'></i></td></tr>"
 
     rain = bits[20]
     since = "since mn"
@@ -1042,9 +1057,14 @@ def getStats(iw):
     if len(bits) > 160 and bits[158] != "" and bits[160] != "":
         since = "since " + bits[160]
 
-    html += "<tr><td><i style='font-size:" + iw + "pt;' class='flaticon-windy'></i></td><td colspan='3'>" + bits[19] + bits[61] + " " + bits[32] + " " + convert(bits[33])
-    html += "</td><td style='text-align:right;'>" + rain + bits[62] + "</td><td style='text-align:right'><i style='font-size:" + iw + "pt;' class='wi wi-umbrella'></i></td></tr>"
-    html += "<tr><td colspan='4'>&nbsp;</td><td style='text-align:right;' colspan='2'>" + since + "</td></tr>"
+    html += "<tr><td><i style='font-size:" + iw
+    html += "pt;' class='flaticon-windy'></i></td><td colspan='3'>" + bits[19] + bits[61] + " "
+    html += bits[32] + " " + convert(bits[33])
+    html += "</td><td style='text-align:right;'>" + rain + bits[62]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "pt;' class='wi wi-umbrella'></i></td></tr>"
+    html += "<tr><td colspan='4'>&nbsp;</td><td style='text-align:right;' colspan='2'>"
+    html += since + "</td></tr>"
 
     html += "</table><br>"
 
