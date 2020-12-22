@@ -1070,24 +1070,47 @@ def getStats(iw):
 
     # Yesterday's stats
 
-    html += "<div style='text-align:center;font-size:18pt;font-weight:bold;'>Yesterday's Statistics</div>"
+    html += "<div style='text-align:center;font-size:18pt;font-weight:bold;'>"
+    html += "Yesterday's Statistics</div>"
     html += "<table style='width:100%;border:0px;'>"
-    
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-temperature'></i></td><td>" + bits[67] + bits[60] + "</td><td>" + convert(bits[68])
-    html += "</td><td style='text-align:right;'>" + convert(bits[66]) + "</td><td style='text-align:right;'>" + bits[65] + bits[60] + "</td><td><i style='text-align:right;font-size:" + iw + "px;' class='flaticon-temperature'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + str(float(iw) * 1.4) + "pt;' class='wi wi-raindrop'></td><td>" + bits[78] + bits[60] + "</td><td>" + convert(bits[79])
-    html += "</td><td style='text-align:right;'>" + convert(bits[77]) + "</td><td style='text-align:right;'>" + bits[76] + bits[60] + "</td><td style='text-align:right;'><i style='font-size:" + str(float(iw) * 1.4) + "pt;' class='wi wi-raindrop'></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-temperature'></i></td><td>"
+    html += bits[67] + bits[60] + "</td><td>" + convert(bits[68])
+    html += "</td><td style='text-align:right;'>" + convert(bits[66])
+    html += "</td><td style='text-align:right;'>" + bits[65] + bits[60]
+    html += "</td><td><i style='text-align:right;font-size:" + iw
+    html += "px;' class='flaticon-temperature'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='wi wi-humidity'></i></td><td>" + bits[82] + bits[64] + "</td><td>" + convert(bits[83])
-    html += "</td><td style='text-align:right;'>" + convert(bits[81]) + "</td><td style='text-align:right;'>" + bits[80] + bits[64] + "</td><td style='text-align:right;'><i style='font-size:" + iw + "px;' class='wi wi-humidity'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + str(float(iw) * 1.4)
+    html += "pt;' class='wi wi-raindrop'></td><td>" + bits[78] + bits[60] + "</td><td>"
+    html += convert(bits[79])
+    html += "</td><td style='text-align:right;'>" + convert(bits[77])
+    html += "</td><td style='text-align:right;'>" + bits[76] + bits[60]
+    html += "</td><td style='text-align:right;'><i style='font-size:" + str(float(iw) * 1.4)
+    html += "pt;' class='wi wi-raindrop'></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='wi wi-barometer'></i></td><td>" + bits[84] + bits[63] + "</td><td>" + convert(bits[85])
-    html += "</td><td style='text-align:right;'>" + convert(bits[87]) + "</td><td style='text-align:right;'>" + bits[86] + bits[63] + "</td><td style='text-align:right;'><i style='font-size:" + iw + "px;' class='wi wi-barometer'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw + "px;' class='wi wi-humidity'></i></td><td>"
+    html += bits[82] + bits[64] + "</td><td>" + convert(bits[83])
+    html += "</td><td style='text-align:right;'>" + convert(bits[81])
+    html += "</td><td style='text-align:right;'>" + bits[80] + bits[64]
+    html += "</td><td style='text-align:right;'><i style='font-size:" + iw
+    html += "px;' class='wi wi-humidity'></i></td></tr>"
+
+    html += "<tr><td><i style='font-size:" + iw + "px;' class='wi wi-barometer'></i></td><td>"
+    html += bits[84] + bits[63] + "</td><td>" + convert(bits[85])
+    html += "</td><td style='text-align:right;'>" + convert(bits[87])
+    html += "</td><td style='text-align:right;'>" + bits[86] + bits[63]
+    html += "</td><td style='text-align:right;'><i style='font-size:" + iw
+    html += "px;' class='wi wi-barometer'></i></td></tr>"
 
     if len(bits) > 202 and get_string('indoor_readings', '0') == "1":
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td><td>" + bits[173] + bits[60] + "</td><td>" + convert(bits[174])
-        html += "</td><td style='text-align:right;'>" + convert(bits[172]) + "</td><td style='text-align:right;'>" + bits[171] + bits[60] + "</td><td style='text-align:right;'><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td><td>" + bits[173] + bits[60]
+        html += "</td><td>" + convert(bits[174])
+        html += "</td><td style='text-align:right;'>" + convert(bits[172])
+        html += "</td><td style='text-align:right;'>" + bits[171] + bits[60]
+        html += "</td><td style='text-align:right;'><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td></tr>"
 
         html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td><td>" + bits[177] + bits[64] + "</td><td>" + convert(bits[178])
         html += "</td><td style='text-align:right'>" + convert(bits[176]) + "</td><td style='text-align:right;'>" + bits[175] + bits[64] + "</td><td style='text-align:right;'><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td></tr>"
