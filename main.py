@@ -223,7 +223,7 @@ class mainScreen(Gtk.ApplicationWindow):
         self.add_action(quit_action)
 
         self.set_titlebar(header)
-        # header.set_subtitle("Sample FlowBox app")
+        # header.set_subtitle("Sample app")
 
         self.webview1 = Webkit.WebView()
         self.webview1.load_html(content, base_uri)
@@ -241,7 +241,7 @@ class mainScreen(Gtk.ApplicationWindow):
         self.webview5.load_html(content, base_uri)
 
         self.webview6 = Webkit.WebView()
-        self.webview6.load_uri(content, base_uri)
+        self.webview6.load_html(content, base_uri)
 
         hbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         hbox1.pack_start(self.webview1, True, True, 0)
