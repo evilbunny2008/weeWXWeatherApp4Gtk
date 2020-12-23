@@ -288,6 +288,12 @@ class mainScreen(Gtk.ApplicationWindow):
         self.webview4 = Webkit.WebView()
         self.webview4.load_html(content, base_uri)
 
+        self.webview5 = Webkit.WebView()
+        self.webview5.load_html(content, base_uri)
+
+        self.webview6 = Webkit.WebView()
+        self.webview6.load_uri(get_string('custom_url', ""))
+
         hbox1.pack_start(self.webview1, True, True, 0)
         hbox1.pack_start(self.webview2, True, True, 0)
 
@@ -301,9 +307,8 @@ class mainScreen(Gtk.ApplicationWindow):
         elif show_radar == "1" and rad_type != "image":
             self.webview2.load_uri(radar_url)
         else:
-            content = common.loadForecast(iw)
+            content = common.loadForecast()
             self.webview2.load_html(content, base_uri)
-
 
         content = htmlheader + common.getStats(iw) + htmlfooter
         self.webview3.load_html(content, base_uri)
@@ -314,7 +319,7 @@ class mainScreen(Gtk.ApplicationWindow):
         elif show_radar == "0" and rad_type != "image":
             self.webview4.load_uri(radar_url)
         else:
-            content = common.loadForecast(iw)
+            content = common.loadForecast()
             self.webview4.load_html(content, base_uri)
 
         hbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -324,7 +329,10 @@ class mainScreen(Gtk.ApplicationWindow):
         hbox3.pack_start(self.webview4, True, True, 0)
 
         hbox4 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        hbox4.pack_start(self.webview5, True, True, 0)
+
         hbox5 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        hbox5.pack_start(self.webview6, True, True, 0)
 
         self.notebook = Gtk.Notebook()
         self.notebook.set_scrollable(True)

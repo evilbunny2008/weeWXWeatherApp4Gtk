@@ -808,9 +808,9 @@ def htmlheader():
 def htmlfooter():
     return "</body></html>"
 
-def loadForecast(iw):
+def loadForecast():
     results = process_forecast()
-    if results[0] == False:
+    if results[0] is False:
         return results[1]
 
     fctype = results[2]
@@ -857,13 +857,13 @@ def loadForecast(iw):
         i += 1
 
     html += "</table>"
-
     html += htmlfooter()
+
     return html
 
 def loadRadar1():
     ret = get_radar()
-    if ret[0] == False:
+    if ret[0] is False:
         return ret[1]
 
     if get_string("rad_type", "image") == "image":
@@ -877,7 +877,7 @@ def loadRadar1():
 
 def loadRadar2():
     ret = get_radar()
-    if ret[0] == False:
+    if ret[0] is False:
         return ret[1]
 
     if get_string("rad_type", "image") == "image":
