@@ -9,7 +9,7 @@ gi.require_version('Gtk', "3.0")
 gi.require_version('WebKit2', '4.0')
 gi.require_version('Handy', '0.0')
 
-from gi.repository import Gtk, Gio, GLib
+from gi.repository import Gtk, Gio, GLib, GObject
 from gi.repository import WebKit2 as Webkit
 from gi.repository import Handy
 
@@ -180,7 +180,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         if ret[0] is False:
             return ret[1]
 
-        # self.window.emit('custom-signal', 'hello from signal')
+        app.win.refresh_data()
 
         self.destroy()
 
@@ -331,10 +331,14 @@ class mainScreen(Gtk.ApplicationWindow):
         if custom_url != "":
             self.webview6.load_uri(custom_url)
 
+    def custom_signal1_method(self, *args):
+        print('Custom signal')
+        print(args)
+
     # callback functions for the actions related to the application
     def settings_callback(self, action, parameter):
-        settings = settingsScreen(app)
-        settings.show_all()
+        self.settings = settingsScreen(app)
+        self.settings.show_all()
 
     def about_callback(self, action, parameter):
         about = aboutScreen(app)
@@ -348,11 +352,11 @@ class Application(Gtk.Application):
         Gtk.Application.__init__(self)
 
     def do_activate(self):
-        win = mainScreen(self)
-        win.show_all()
+        self.win = mainScreen(self)
+        self.win.show_all()
         if common.get_string("saved", "0") == '0':
-            settings = settingsScreen(self)
-            settings.show_all()
+            self.settings = settingsScreen(self)
+            self.settings.show_all()
 
     def do_startup(self):
         Gtk.Application.do_startup(self)

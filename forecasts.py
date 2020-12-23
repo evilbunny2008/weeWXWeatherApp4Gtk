@@ -96,8 +96,8 @@ def process_wz(data):
         myday.min = myrange[0].strip()
 
         if metric != "1":
-            myday.max = round(float(myrange[1][:-7]) * 9.0 / 5.0 + 32.0, 0) + "&deg;F"
-            myday.min = round(float(myrange[0][:-7]) * 9.0 / 5.0 + 32.0, 0) + "&deg;F"
+            myday.max = str(round(float(myrange[1][:-7]) * 9.0 / 5.0 + 32.0, 0)) + "&deg;F"
+            myday.min = str(round(float(myrange[0][:-7]) * 9.0 / 5.0 + 32.0, 0)) + "&deg;F"
 
         days += str(myday) + ","
 
