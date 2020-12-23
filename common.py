@@ -87,14 +87,14 @@ def get_string(key, defval):
 
     check_paths()
 
-    config = configparser.ConfigParser()
+    config = configparser.ConfigParser(strict=False, interpolation=None)
     try:
         config.read(CONFIGBASE + "/config.ini")
         val = config['DEFAULT'][key]
         if val.strip() != "":
             return val.strip()
-    except Exception:
-        pass
+    except Exception as e:
+        print(str(e))
 
     return defval
 
@@ -103,7 +103,7 @@ def set_string(key, val):
 
     check_paths()
 
-    config = configparser.ConfigParser()
+    config = configparser.ConfigParser(strict=False, interpolation=None)
     try:
         config.read(CONFIGBASE + "/config.ini")
         config['DEFAULT'][key] = val
@@ -111,7 +111,7 @@ def set_string(key, val):
             config.write(configfile)
         return True
     except Exception as e:
-        pass
+        print(str(e))
 
     return False
 
@@ -867,12 +867,12 @@ def loadRadar1():
         return ret[1]
 
     if get_string("rad_type", "image") == "image":
-        html = htmlheader() + "<div style='position:absolute;top:0px;left:0px;width:100%'>" 
-        html += "<img style='max-width:100%;width:1300px;' src='file://" + CACHEBASE + "/radar.gif'>"
-        html += "</div>" + htmlfooter()
+        html = htmlheader() + "<div style='position:absolute;top:0px;left:0px;width:100%'>"
+        html += "<img style='max-width:100%;width:1300px;' "
+        html += "src='file://" + CACHEBASE + "/radar.gif'></div>" + htmlfooter()
 
         return html
-    
+
     return
 
 def loadRadar2():

@@ -299,7 +299,7 @@ class mainScreen(Gtk.ApplicationWindow):
             content = common.loadRadar1()
             self.webview2.load_html(content, base_uri)
         elif show_radar == "1" and rad_type != "image":
-            self.webview2.load_html(radar_url, base_uri)
+            self.webview2.load_uri(radar_url)
         else:
             content = common.loadForecast(iw)
             self.webview2.load_html(content, base_uri)
@@ -312,7 +312,7 @@ class mainScreen(Gtk.ApplicationWindow):
             content = common.loadRadar2()
             self.webview4.load_html(content, base_uri)
         elif show_radar == "0" and rad_type != "image":
-            self.webview4.load_html(radar_url, base_uri)
+            self.webview4.load_uri(radar_url)
         else:
             content = common.loadForecast(iw)
             self.webview4.load_html(content, base_uri)
@@ -371,6 +371,7 @@ class Application(Gtk.Application):
 
 if __name__ == "__main__":
     ret = common.get_config()
+
     settings_url = ret[0]
     indoor_readings = ret[1]
     dark_theme = ret[2]
@@ -385,5 +386,6 @@ if __name__ == "__main__":
     app_dir = ret[11]
     update_freq = ret[12]
     wifidownload = ret[13]
+
     app = Application()
     app.run()
