@@ -299,12 +299,17 @@ class mainScreen(Gtk.ApplicationWindow):
         radar_url = common.get_string("radar_url", "")
         custom_url = common.get_string("custom_url", "")
 
+        if common.get_string("show_radar", "1") == '0':
+            self.frlabel.set_label("Radar")
+        else:
+            self.frlabel.set_label("Forecast")
+
         content = common.loadCurrentConditions(iw)
         content = common.htmlheader() + content + common.htmlfooter()
         self.webview1.load_html(content, base_uri)
 
         if show_radar == "1" and rad_type == "image":
-            content = common.loadRadar1()
+            content = common.loadRadar()
             self.webview2.load_html(content, base_uri)
         elif show_radar == "1" and rad_type != "image":
             self.webview2.load_uri(radar_url)
@@ -316,7 +321,7 @@ class mainScreen(Gtk.ApplicationWindow):
         self.webview3.load_html(content, base_uri)
 
         if show_radar == "0" and rad_type == "image":
-            content = common.loadRadar2()
+            content = common.loadRadar()
             self.webview4.load_html(content, base_uri)
         elif show_radar == "0" and rad_type != "image":
             self.webview4.load_uri(radar_url)
