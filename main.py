@@ -9,7 +9,7 @@ gi.require_version('Gtk', "3.0")
 gi.require_version('WebKit2', '4.0')
 gi.require_version('Handy', '0.0')
 
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk, Gio, GLib
 from gi.repository import WebKit2 as Webkit
 from gi.repository import Handy
 
@@ -22,23 +22,8 @@ INTERVALS = ["Manual Updates",
              "Every 30 Minutes",
              "Every Hour"]
 
-settings_url = "https://example.com/weewx/inigo-settings.txt"
-indoor_readings = "0"
-dark_theme = "0"
-use_metric = "1"
-show_radar = "1"
-use_icons = "0"
-saved = "0"
-htmlheader = ""
-ssheader = ""
-htmlfooter = "</body></html>"
-cachebase = "/tmp"
-rad_type = "image"
-radar_url = ""
-fctype = "yahoo"
-app_dir = ""
-update_freq = "1"
-wifidownload = "0"
+iw = "18"
+base_uri = "file:///"
 
 class aboutScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
@@ -91,7 +76,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         vbox.pack_start(hbox, False, True, 0)
 
         self.url = Gtk.Entry()
-        self.url.set_text(settings_url)
+        self.url.set_text(common.get_string("settings_url", ""))
         vbox.pack_start(self.url, False, False, 0)
 
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -101,7 +86,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         hbox.pack_start(label, False, False, 0)
 
         self.indoor = Gtk.Switch()
-        if indoor_readings == "1":
+        if common.get_string("indoor_readings", "0") == "1":
             self.indoor.set_active(True)
         hbox.pack_end(self.indoor, False, True, 0)
 
@@ -112,7 +97,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         hbox.pack_start(label, False, False, 0)
 
         self.dark_theme = Gtk.Switch()
-        if dark_theme == "1":
+        if common.get_string("dark_theme", "0") == "1":
             self.dark_theme.set_active(True)
         hbox.pack_end(self.dark_theme, False, True, 0)
 
@@ -123,7 +108,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         hbox.pack_start(label, False, False, 0)
 
         self.metric = Gtk.Switch()
-        if use_metric == "1":
+        if common.get_string("use_metric", "1") == "1":
             self.metric.set_active(True)
         hbox.pack_end(self.metric, False, True, 0)
 
@@ -134,7 +119,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         hbox.pack_start(label, False, False, 0)
 
         self.icons = Gtk.Switch()
-        if use_icons == "1":
+        if common.get_string("use_icons", "0") == "1":
             self.icons.set_active(True)
         hbox.pack_end(self.icons, False, True, 0)
 
@@ -145,7 +130,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         hbox.pack_start(label, False, False, 0)
 
         self.wifi = Gtk.Switch()
-        if wifidownload == "1":
+        if common.get_string("wifidownload", "0") == "1":
             self.wifi.set_active(True)
         hbox.pack_end(self.wifi, False, True, 0)
 
@@ -160,7 +145,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         for interval in INTERVALS:
             self.interval.append_text(interval)
 
-        self.interval.set_active(int(update_freq))
+        self.interval.set_active(int(common.get_string("update_freq", "1")))
         hbox.pack_end(self.interval, False, True, 0)
 
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -175,7 +160,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         self.forecast = Gtk.RadioButton.new_with_label_from_widget(self.radar, "Show Forecast")
         vbox.pack_start(self.forecast, False, False, 0)
 
-        if show_radar == "0":
+        if common.get_string("show_radar", "1") == "0":
             self.forecast.set_active(True)
 
     def on_button_clicked(self, widget):
@@ -192,41 +177,8 @@ class settingsScreen(Gtk.ApplicationWindow):
         update = self.interval.get_active()
 
         ret = common.save_config(url, indoor, dark, metric, radar, icons, update, wifi)
-        if ret[0] == False:
-            # TODO: notify user about ret[1] and skip saving
-            return
-
-        saved = '1'
-        settings_url = url
-        if indoor:
-            indoor_readings = '1'
-        else:
-            indoor_readings = '0'
-        if dark:
-            dark_theme = '1'
-        else:
-            dark_theme = '0'
-        if metric:
-            use_metric = '1'
-        else:
-            use_metric = '0'
-        if radar:
-            show_radar = '1'
-        else:
-            show_radar = '0'
-        if icons:
-            use_icons = '1'
-        else:
-            use_icons = '0'
-        update_freq = str(update)
-        if wifi:
-            wifidownload = '1'
-        else:
-            wifidownload = '0'
-
-        rad_type = ret[2]
-        radar_url = ret[3]
-        fctype = ret[4]
+        if ret[0] is False:
+            return ret[1]
 
         self.destroy()
 
@@ -236,9 +188,6 @@ class mainScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="weeWX App", application=app)
         self.set_default_size(400, 600)
-
-        iw = "18"
-        base_uri = "file:///"
 
         htmlheader = common.htmlheader()
         htmlfooter = common.htmlfooter()
@@ -274,8 +223,6 @@ class mainScreen(Gtk.ApplicationWindow):
         self.set_titlebar(header)
         # header.set_subtitle("Sample FlowBox app")
 
-        hbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-
         self.webview1 = Webkit.WebView()
         self.webview1.load_html(content, base_uri)
 
@@ -294,36 +241,9 @@ class mainScreen(Gtk.ApplicationWindow):
         self.webview6 = Webkit.WebView()
         self.webview6.load_uri(common.get_string('custom_url', ""))
 
+        hbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         hbox1.pack_start(self.webview1, True, True, 0)
         hbox1.pack_start(self.webview2, True, True, 0)
-
-        content = common.loadCurrentConditions(iw)
-        content = htmlheader + content + htmlfooter
-        self.webview1.load_html(content, base_uri)
-
-        if show_radar == "1" and rad_type == "image":
-            content = common.loadRadar1()
-            self.webview2.load_html(content, base_uri)
-        elif show_radar == "1" and rad_type != "image":
-            self.webview2.load_uri(radar_url)
-        else:
-            content = common.loadForecast()
-            self.webview2.load_html(content, base_uri)
-
-        content = htmlheader + common.getStats(iw) + htmlfooter
-        self.webview3.load_html(content, base_uri)
-
-        if show_radar == "0" and rad_type == "image":
-            content = common.loadRadar2()
-            self.webview4.load_html(content, base_uri)
-        elif show_radar == "0" and rad_type != "image":
-            self.webview4.load_uri(radar_url)
-        else:
-            content = common.loadForecast()
-            self.webview4.load_html(content, base_uri)
-
-        ret = common.webcam()
-        self.webview5.load_html(ret, base_uri)
 
         hbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         hbox2.pack_start(self.webview3, True, True, 0)
@@ -342,7 +262,7 @@ class mainScreen(Gtk.ApplicationWindow):
         self.wlabel = Gtk.Label(label="Weather")
         self.slabel = Gtk.Label(label="Stats")
         self.frlabel = Gtk.Label(label="Forecast")
-        if show_radar == '0':
+        if common.get_string("show_radar", "1") == '0':
             self.frlabel.set_label("Radar")
         self.wclabel = Gtk.Label(label="Webcam")
         self.clabel = Gtk.Label(label="Custom")
@@ -353,6 +273,44 @@ class mainScreen(Gtk.ApplicationWindow):
         self.notebook.append_page(hbox4, self.wclabel)
         self.notebook.append_page(hbox5, self.clabel)
         self.add(self.notebook)
+        self.refresh_data()
+
+    def refresh_data(self):
+        GLib.timeout_add(300000, self.refresh_data)
+
+        show_radar = common.get_string("show_radar", "1")
+        rad_type = common.get_string("rad_type", "image")
+        radar_url = common.get_string("radar_url", "")
+
+        content = common.loadCurrentConditions(iw)
+        content = common.htmlheader() + content + common.htmlfooter()
+        self.webview1.load_html(content, base_uri)
+
+        if show_radar == "1" and rad_type == "image":
+            content = common.loadRadar1()
+            self.webview2.load_html(content, base_uri)
+        elif show_radar == "1" and rad_type != "image":
+            self.webview2.load_uri(radar_url)
+        else:
+            content = common.loadForecast()
+            self.webview2.load_html(content, base_uri)
+
+        content = common.htmlheader() + common.getStats(iw) + common.htmlfooter()
+        self.webview3.load_html(content, base_uri)
+
+        if show_radar == "0" and rad_type == "image":
+            content = common.loadRadar2()
+            self.webview4.load_html(content, base_uri)
+        elif show_radar == "0" and rad_type != "image":
+            self.webview4.load_uri(radar_url)
+        else:
+            content = common.loadForecast()
+            self.webview4.load_html(content, base_uri)
+
+        ret = common.webcam()
+        self.webview5.load_html(ret, base_uri)
+
+        self.webview6.reload()
 
     # callback functions for the actions related to the application
     def settings_callback(self, action, parameter):
@@ -373,7 +331,7 @@ class Application(Gtk.Application):
     def do_activate(self):
         win = mainScreen(self)
         win.show_all()
-        if saved == '0':
+        if common.get_string("saved", "0") == '0':
             settings = settingsScreen(self)
             settings.show_all()
 
@@ -381,22 +339,5 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
 if __name__ == "__main__":
-    ret = common.get_config()
-
-    settings_url = ret[0]
-    indoor_readings = ret[1]
-    dark_theme = ret[2]
-    use_metric = ret[3]
-    show_radar = ret[4]
-    use_icons = ret[5]
-    saved = ret[6]
-    cachebase = ret[7]
-    rad_type = ret[8]
-    radar_url = ret[9]
-    fctype = ret[10]
-    app_dir = ret[11]
-    update_freq = ret[12]
-    wifidownload = ret[13]
-
     app = Application()
     app.run()
