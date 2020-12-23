@@ -322,6 +322,9 @@ class mainScreen(Gtk.ApplicationWindow):
             content = common.loadForecast()
             self.webview4.load_html(content, base_uri)
 
+        ret = common.webcam()
+        self.webview5.load_html(ret, base_uri)
+
         hbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         hbox2.pack_start(self.webview3, True, True, 0)
 

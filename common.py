@@ -442,6 +442,14 @@ def get_webcam(webcam_url="", force_download=True):
 
     return [True, "Webcam URL was ok", width, height]
 
+def webcam():
+    ret = get_webcam()
+    html = htmlheader()
+    html += "<img style='height:99vh;width:99vw;' src='file://" + CACHEBASE + "/webcam.jpg'>"
+    html += htmlfooter()
+
+    return html
+
 def get_config():
     """ open and parse the config file """
 
