@@ -278,11 +278,27 @@ class mainScreen(Gtk.ApplicationWindow):
         self.refresh_data()
 
     def refresh_data(self):
-        GLib.timeout_add(300000, self.refresh_data)
+        update_freq = int(common.get_string("update_freq", "1"))
+        if update_freq == 0:
+            timer = 0
+        elif update_freq == 2:
+            timer = 600000
+        elif update_freq == 3:
+            timer = 900000
+        elif update_freq == 4:
+            timer = 1800000
+        elif update_freq == 5:
+            timer = 3600000
+        else:
+            timer = 300000
+
+        if timer > 0:
+            GLib.timeout_add(timer, self.refresh_data)
 
         show_radar = common.get_string("show_radar", "1")
         rad_type = common.get_string("rad_type", "image")
         radar_url = common.get_string("radar_url", "")
+        custom_url = common.get_string("custom_url", "")
 
         content = common.loadCurrentConditions(iw)
         content = common.htmlheader() + content + common.htmlfooter()
@@ -312,7 +328,8 @@ class mainScreen(Gtk.ApplicationWindow):
         ret = common.webcam()
         self.webview5.load_html(ret, base_uri)
 
-        self.webview6.reload()
+        if custom_url != "":
+            self.webview6.load_uri(custom_url)
 
     # callback functions for the actions related to the application
     def settings_callback(self, action, parameter):
