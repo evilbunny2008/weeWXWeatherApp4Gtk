@@ -816,7 +816,32 @@ def htmlheader():
 def htmlfooter():
     return "</body></html>"
 
-def loadForecast():
+def loadForecast1():
+    results = process_forecast()
+    if results[0] is False:
+        return results[1]
+
+    print(results)
+
+    fctype = results[2]
+    ftime = results[3]
+    desc = results[4]
+
+    html = htmlheader()
+
+    html += doForecastBanner(fctype, ftime, desc, True)
+
+    html += "<table style='width:100%;border:0px;'>"
+
+    for JsonObject in json.loads(results[1]):
+        html += doForecastRow(JsonObject)
+
+    html += "</table>"
+    html += htmlfooter()
+
+    return html
+
+def loadForecast2():
     results = process_forecast()
     if results[0] is False:
         return results[1]
@@ -869,21 +894,7 @@ def loadForecast():
 
     return html
 
-def loadRadar1():
-    ret = get_radar()
-    if ret[0] is False:
-        return ret[1]
-
-    if get_string("rad_type", "image") == "image":
-        html = htmlheader() + "<div style='position:absolute;top:0px;left:0px;width:100%'>"
-        html += "<img style='max-width:100%;width:1300px;' "
-        html += "src='file://" + CACHEBASE + "/radar.gif'></div>" + htmlfooter()
-
-        return html
-
-    return
-
-def loadRadar2():
+def loadRadar():
     ret = get_radar()
     if ret[0] is False:
         return ret[1]

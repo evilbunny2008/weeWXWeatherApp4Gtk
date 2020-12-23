@@ -309,7 +309,7 @@ class mainScreen(Gtk.ApplicationWindow):
         elif show_radar == "1" and rad_type != "image":
             self.webview2.load_uri(radar_url)
         else:
-            content = common.loadForecast()
+            content = common.loadForecast1()
             self.webview2.load_html(content, base_uri)
 
         content = common.htmlheader() + common.getStats(iw) + common.htmlfooter()
@@ -321,7 +321,7 @@ class mainScreen(Gtk.ApplicationWindow):
         elif show_radar == "0" and rad_type != "image":
             self.webview4.load_uri(radar_url)
         else:
-            content = common.loadForecast()
+            content = common.loadForecast2()
             self.webview4.load_html(content, base_uri)
 
         ret = common.webcam()
