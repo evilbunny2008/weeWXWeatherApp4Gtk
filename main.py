@@ -180,6 +180,8 @@ class settingsScreen(Gtk.ApplicationWindow):
         if ret[0] is False:
             return ret[1]
 
+        # self.window.emit('custom-signal', 'hello from signal')
+
         self.destroy()
 
 # https://developer.gnome.org/gnome-devel-demos/unstable/menubutton.py.html.en
