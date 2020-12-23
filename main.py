@@ -223,7 +223,6 @@ class mainScreen(Gtk.ApplicationWindow):
         self.add_action(quit_action)
 
         self.set_titlebar(header)
-        # header.set_subtitle("Sample app")
 
         self.webview1 = Webkit.WebView()
         self.webview1.load_html(content, base_uri)
@@ -331,18 +330,13 @@ class mainScreen(Gtk.ApplicationWindow):
         if custom_url != "":
             self.webview6.load_uri(custom_url)
 
-    def custom_signal1_method(self, *args):
-        print('Custom signal')
-        print(args)
-
-    # callback functions for the actions related to the application
     def settings_callback(self, action, parameter):
         self.settings = settingsScreen(app)
         self.settings.show_all()
 
     def about_callback(self, action, parameter):
-        about = aboutScreen(app)
-        about.show_all()
+        self.about = aboutScreen(app)
+        self.about.show_all()
 
     def quit_callback(self, action, parameter):
         app.quit()
