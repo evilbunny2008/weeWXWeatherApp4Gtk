@@ -1112,12 +1112,22 @@ def getStats(iw):
         html += "</td><td style='text-align:right;'><i style='font-size:" + iw
         html += "px;' class='flaticon-home-page'></i></td></tr>"
 
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td><td>" + bits[177] + bits[64] + "</td><td>" + convert(bits[178])
-        html += "</td><td style='text-align:right'>" + convert(bits[176]) + "</td><td style='text-align:right;'>" + bits[175] + bits[64] + "</td><td style='text-align:right;'><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td><td>" + bits[177] + bits[64]
+        html += "</td><td>" + convert(bits[178])
+        html += "</td><td style='text-align:right'>" + convert(bits[176])
+        html += "</td><td style='text-align:right;'>" + bits[175] + bits[64]
+        html += "</td><td style='text-align:right;'><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td></tr>"
 
     if len(bits) > 209 and bits[209] != "":
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-women-sunglasses'></i></td><td>" + bits[209] + "UVI</td><td>" + convert(bits[210])
-        html += "</td><td style='text-align:right'>" + convert(bits[212]) + "</td><td style='text-align:right;'>" + bits[211] + "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='flaticon-women-sunglasses'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-women-sunglasses'></i></td><td>" + bits[209]
+        html += "UVI</td><td>" + convert(bits[210])
+        html += "</td><td style='text-align:right'>" + convert(bits[212])
+        html += "</td><td style='text-align:right;'>" + bits[211]
+        html += "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "px;' class='flaticon-women-sunglasses'></i></td></tr>"
 
     rain = bits[21]
     since = "before mn"
@@ -1192,44 +1202,92 @@ def getStats(iw):
         html += "px;' class='flaticon-home-page'></i></td></tr>"
 
     if len(bits) > 213 and bits[213] != "":
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-women-sunglasses'></i></td><td>" + bits[213] + "UVI</td><td>" + getTime(bits[214])
-        html += "</td><td style='text-align:right'>" + getTime(bits[216]) + "</td><td style='text-align:right'>" + bits[215] + "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='flaticon-women-sunglasses'></i></td></tr>"    
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-women-sunglasses'></i></td><td>" + bits[213]
+        html += "UVI</td><td>" + getTime(bits[214])
+        html += "</td><td style='text-align:right'>" + getTime(bits[216])
+        html += "</td><td style='text-align:right'>" + bits[215]
+        html += "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "px;' class='flaticon-women-sunglasses'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-windy'></i></td><td colspan='3'>" + bits[92] + bits[61] + " " + bits[93] + " " + getTime(bits[94])
-    html += "</td><td style='text-align:right'>" + bits[22] + bits[62] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='wi wi-umbrella'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw
+    html += "px;' class='flaticon-windy'></i></td><td colspan='3'>" + bits[92] + bits[61]
+    html += " " + bits[93] + " " + getTime(bits[94])
+    html += "</td><td style='text-align:right'>" + bits[22] + bits[62]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "px;' class='wi wi-umbrella'></i></td></tr>"
 
     html += "</table><br>"
 
     # This years stats
 
-    html += "<div style='text-align:center;font-size:18pt;font-weight:bold;'>This Year's Statistics</div>"
+    html += "<div style='text-align:center;font-size:18pt;font-weight:bold;'>"
+    html += "This Year's Statistics</div>"
     html += "<table style='width:100%;border:0px;'>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-temperature'></i></td><td>" + bits[113] + bits[60] + "</td><td>" + getTime(bits[114])
-    html += "</td><td style='text-align:right'>" + getTime(bits[112]) + "</td><td style='text-align:right'>" + bits[111] + bits[60] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='flaticon-temperature'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-temperature'></i></td><td>"
+    html += bits[113] + bits[60] + "</td><td>" + getTime(bits[114])
+    html += "</td><td style='text-align:right'>" + getTime(bits[112])
+    html += "</td><td style='text-align:right'>" + bits[111] + bits[60]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "px;' class='flaticon-temperature'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + str(float(iw) * 1.4) + "px;' class='wi wi-raindrop'></td><td>" + bits[124] + bits[60] + "</td><td>" + getTime(bits[125])
-    html += "</td><td style='text-align:right'>" + getTime(bits[123]) + "</td><td style='text-align:right'>" + bits[122] + bits[60] + "</td><td style='text-align:right'><i style='font-size:" + str(float(iw) * 1.4) + "px;' class='wi wi-raindrop'></td></tr>"
+    html += "<tr><td><i style='font-size:" + str(float(iw) * 1.4)
+    html += "px;' class='wi wi-raindrop'></td><td>" + bits[124] + bits[60]
+    html += "</td><td>" + getTime(bits[125])
+    html += "</td><td style='text-align:right'>" + getTime(bits[123])
+    html += "</td><td style='text-align:right'>" + bits[122] + bits[60]
+    html += "</td><td style='text-align:right'><i style='font-size:" + str(float(iw) * 1.4)
+    html += "px;' class='wi wi-raindrop'></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='wi wi-humidity'></i></td><td>" + bits[128] + bits[64] + "</td><td>" + getTime(bits[129])
-    html += "</td><td style='text-align:right'>" + getTime(bits[127]) + "</td><td style='text-align:right'>" + bits[126] + bits[64] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='wi wi-humidity'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw
+    html += "px;' class='wi wi-humidity'></i></td><td>" + bits[128] + bits[64]
+    html += "</td><td>" + getTime(bits[129])
+    html += "</td><td style='text-align:right'>" + getTime(bits[127])
+    html += "</td><td style='text-align:right'>" + bits[126] + bits[64]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "px;' class='wi wi-humidity'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='wi wi-barometer'></i></td><td>" + bits[130] + bits[63] + "</td><td>" + getTime(bits[131])
-    html += "</td><td style='text-align:right'>" + getTime(bits[133]) + "</td><td style='text-align:right'>" + bits[132] + bits[63] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='wi wi-barometer'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw
+    html += "px;' class='wi wi-barometer'></i></td><td>" + bits[130] + bits[63]
+    html += "</td><td>" + getTime(bits[131])
+    html += "</td><td style='text-align:right'>" + getTime(bits[133])
+    html += "</td><td style='text-align:right'>" + bits[132] + bits[63]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "px;' class='wi wi-barometer'></i></td></tr>"
 
     if len(bits) > 202 and get_string("indoor_readings", "0") == "1":
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td><td>" + bits[189] + bits[60] + "</td><td>" + getTime(bits[190])
-        html += "</td><td style='text-align:right'>" + getTime(bits[188]) + "</td><td style='text-align:right'>" + bits[187] + bits[60] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td><td>"
+        html += bits[189] + bits[60] + "</td><td>" + getTime(bits[190])
+        html += "</td><td style='text-align:right'>" + getTime(bits[188])
+        html += "</td><td style='text-align:right'>" + bits[187] + bits[60]
+        html += "</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td></tr>"
 
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td><td>" + bits[193] + bits[64] + "</td><td>" + getTime(bits[194])
-        html += "</td><td style='text-align:right'>" + getTime(bits[192]) + "</td><td style='text-align:right'>" + bits[191] + bits[64] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='flaticon-home-page'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td><td>" + bits[193] + bits[64]
+        html += "</td><td>" + getTime(bits[194])
+        html += "</td><td style='text-align:right'>" + getTime(bits[192])
+        html += "</td><td style='text-align:right'>" + bits[191] + bits[64]
+        html += "</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "px;' class='flaticon-home-page'></i></td></tr>"
 
     if len(bits) > 217 and bits[217] != "":
-        html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-women-sunglasses'></i></td><td>" + bits[217] + "UVI</td><td>" + getTime(bits[218])
-        html += "</td><td style='text-align:right'>" + getTime(bits[220]) + "</td><td style='text-align:right'>" + bits[219] + "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='flaticon-women-sunglasses'></i></td></tr>"
+        html += "<tr><td><i style='font-size:" + iw
+        html += "px;' class='flaticon-women-sunglasses'></i></td><td>" + bits[217]
+        html += "UVI</td><td>" + getTime(bits[218])
+        html += "</td><td style='text-align:right'>" + getTime(bits[220])
+        html += "</td><td style='text-align:right'>" + bits[219]
+        html += "W/m\u00B2</td><td style='text-align:right'><i style='font-size:" + iw
+        html += "px;' class='flaticon-women-sunglasses'></i></td></tr>"
 
-    html += "<tr><td><i style='font-size:" + iw + "px;' class='flaticon-windy'></i></td><td colspan='3'>" + bits[115] + bits[61] + " " + bits[116] + " " + getTime(bits[117])
-    html += "</td><td style='text-align:right'>" + bits[23] + bits[62] + "</td><td style='text-align:right'><i style='font-size:" + iw + "px;' class='wi wi-umbrella'></i></td></tr>"
+    html += "<tr><td><i style='font-size:" + iw
+    html += "px;' class='flaticon-windy'></i></td><td colspan='3'>" + bits[115] + bits[61] + " "
+    html += bits[116] + " " + getTime(bits[117])
+    html += "</td><td style='text-align:right'>" + bits[23] + bits[62]
+    html += "</td><td style='text-align:right'><i style='font-size:" + iw
+    html += "px;' class='wi wi-umbrella'></i></td></tr>"
 
     html += "</table><br>"
 
