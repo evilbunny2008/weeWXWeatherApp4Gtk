@@ -861,12 +861,28 @@ def loadForecast(iw):
     html += htmlfooter()
     return html
 
-def loadRadar():
+def loadRadar1():
     ret = get_radar()
-    if ret[0] == True:
-        pass
+    if ret[0] == False:
+        return ret[1]
 
-    return "still loading"
+    html = htmlheader() + "<div style='position:absolute;top:0px;left:0px;width:100%'>" 
+    html += "<img style='max-width:100%;width:1300px;' src='file://" + CACHEBASE + "/radar.gif'>"
+    html += "</div>" + htmlfooter()
+
+    return html
+
+def loadRadar2():
+    ret = get_radar()
+    if ret[0] == False:
+        return ret[1]
+
+    html = htmlheader() + "<div style='position:absolute;top:300px;left:-100px;width:100%'>" 
+    html += "<img style='transform:rotate(90deg);width:1300px;'"
+    html += " src='file://" + CACHEBASE + "/radar.gif'>"
+    html += "</div>" + htmlfooter()
+
+    return html
 
 def doForecastBanner(fctype, ftime, desc, showHeader):
     html = ""
