@@ -292,7 +292,7 @@ class mainScreen(Gtk.ApplicationWindow):
         self.webview5.load_html(content, base_uri)
 
         self.webview6 = Webkit.WebView()
-        self.webview6.load_uri(get_string('custom_url', ""))
+        self.webview6.load_uri(common.get_string('custom_url', ""))
 
         hbox1.pack_start(self.webview1, True, True, 0)
         hbox1.pack_start(self.webview2, True, True, 0)
