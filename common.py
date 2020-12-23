@@ -811,7 +811,7 @@ def htmlfooter():
 def loadForecast(iw):
     results = process_forecast()
     if results[0] == False:
-        return
+        return results[1]
 
     fctype = results[2]
     ftime = results[3]
@@ -866,23 +866,29 @@ def loadRadar1():
     if ret[0] == False:
         return ret[1]
 
-    html = htmlheader() + "<div style='position:absolute;top:0px;left:0px;width:100%'>" 
-    html += "<img style='max-width:100%;width:1300px;' src='file://" + CACHEBASE + "/radar.gif'>"
-    html += "</div>" + htmlfooter()
+    if get_string("rad_type", "image") == "image":
+        html = htmlheader() + "<div style='position:absolute;top:0px;left:0px;width:100%'>" 
+        html += "<img style='max-width:100%;width:1300px;' src='file://" + CACHEBASE + "/radar.gif'>"
+        html += "</div>" + htmlfooter()
 
-    return html
+        return html
+    
+    return
 
 def loadRadar2():
     ret = get_radar()
     if ret[0] == False:
         return ret[1]
 
-    html = htmlheader() + "<div style='position:absolute;top:300px;left:-100px;width:100%'>" 
-    html += "<img style='transform:rotate(90deg);width:1300px;'"
-    html += " src='file://" + CACHEBASE + "/radar.gif'>"
-    html += "</div>" + htmlfooter()
+    if get_string("rad_type", "image") == "image":
+        html = htmlheader() + "<div style='position:absolute;top:300px;left:-100px;width:100%'>" 
+        html += "<img style='transform:rotate(90deg);width:1300px;'"
+        html += " src='file://" + CACHEBASE + "/radar.gif'>"
+        html += "</div>" + htmlfooter()
 
-    return html
+        return html
+
+    return
 
 def doForecastBanner(fctype, ftime, desc, showHeader):
     html = ""

@@ -295,24 +295,27 @@ class mainScreen(Gtk.ApplicationWindow):
         content = htmlheader + content + htmlfooter
         self.webview1.load_html(content, base_uri)
 
-        if show_radar == '1':
+        if show_radar == "1" and rad_type == "image":
             content = common.loadRadar1()
+            self.webview2.load_html(content, base_uri)
+        elif show_radar == "1" and rad_type != "image":
+            self.webview2.load_html(radar_url, base_uri)
         else:
             content = common.loadForecast(iw)
+            self.webview2.load_html(content, base_uri)
 
-        content = htmlheader + content + htmlfooter
-        self.webview2.load_html(content, base_uri)
 
         content = htmlheader + common.getStats(iw) + htmlfooter
         self.webview3.load_html(content, base_uri)
 
-        if show_radar == '0':
+        if show_radar == "0" and rad_type == "image":
             content = common.loadRadar2()
+            self.webview4.load_html(content, base_uri)
+        elif show_radar == "0" and rad_type != "image":
+            self.webview4.load_html(radar_url, base_uri)
         else:
             content = common.loadForecast(iw)
-
-        content = htmlheader + common.getStats(iw) + htmlfooter
-        self.webview4.load_html(content, base_uri)
+            self.webview4.load_html(content, base_uri)
 
         hbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         hbox2.pack_start(self.webview3, True, True, 0)
