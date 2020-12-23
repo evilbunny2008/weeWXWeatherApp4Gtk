@@ -146,7 +146,7 @@ def write_file(filename, mydata, directory=CONFIGBASE):
     except TypeError:
         my_file.write(mydata.decode('utf8'))
     my_file.close()
-    print("Wrote to: " + filename)
+    # print("Wrote to: " + filename)
 
 def write_binary(filename, binary, directory=CONFIGBASE):
     """ save data to a file """
@@ -156,7 +156,7 @@ def write_binary(filename, binary, directory=CONFIGBASE):
     my_file = open(filename, "wb")
     my_file.write(binary)
     my_file.close()
-    print("Wrote to: " + filename)
+    # print("Wrote to: " + filename)
 
 def download_data(data_url="", force_download=False):
     """ download and save data to local file """
@@ -404,8 +404,6 @@ def get_webcam(webcam_url="", force_download=True):
                 if ret is False:
                     return ret
 
-                print(webcam_url)
-                print(ret)
                 sock.connect((ret[2], int(ret[3])))
                 ret[4] = 'GET ' + ret[4] + ' HTTP/1.0\r\n\r\n'
                 sock.sendall(ret[4].encode('utf8'))
@@ -820,8 +818,6 @@ def loadForecast1():
     results = process_forecast()
     if results[0] is False:
         return results[1]
-
-    print(results)
 
     fctype = results[2]
     ftime = results[3]
