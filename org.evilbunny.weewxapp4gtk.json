@@ -1,7 +1,5 @@
 {
     "app-id": "org.evilbunny.weewxapp4gtk",
-    "name": "weeWx App 4 Gtk",
-    "version": "0.0.1",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
@@ -21,10 +19,6 @@
                 "install -D xmltodict.py /app/bin/xmltodict.py",
                 "install -D yahoo.py /app/bin/yahoo.py",
                 "cp -a assets /app/bin/"
-            ],
-            "finish-args": [
-                "--share=network",
-                "--socket=wayland"
             ],
             "sources": [
                 {
