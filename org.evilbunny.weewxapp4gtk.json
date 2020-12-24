@@ -1,0 +1,70 @@
+{
+    "app-id": "org.evilbunny.weewxapp4gtk",
+    "name": "weeWx App 4 Gtk",
+    "version": "0.0.1",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.38",
+    "sdk": "org.gnome.Sdk",
+    "command": "main.py",
+    "modules": [
+        {
+            "name": "weeWxApp4Gtk",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D main.py /app/bin/main.py",
+                "install -D common.py /app/bin/common.py",
+                "install -D day.py /app/bin/day.py",
+                "install -D forecasts.py /app/bin/forecasts.py",
+                "install -D meteofrance.py /app/bin/meteofrance.py",
+                "install -D wca.py /app/bin/wca.py",
+                "install -D wgov.py /app/bin/wgov.py",
+                "install -D xmltodict.py /app/bin/xmltodict.py",
+                "install -D yahoo.py /app/bin/yahoo.py",
+                "cp -a assets /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "main.py"
+                },
+                {
+                    "type": "file",
+                    "path": "common.py"
+                },
+                {
+                    "type": "file",
+                    "path": "day.py"
+                },
+                {
+                    "type": "file",
+                    "path": "forecasts.py"
+                },
+                {
+                    "type": "file",
+                    "path": "meteofrance.py"
+                },
+                {
+                    "type": "file",
+                    "path": "wca.py"
+                },
+                {
+                    "type": "file",
+                    "path": "wgov.py"
+                },
+                {
+                    "type": "file",
+                    "path": "xmltodict.py"
+                },
+                {
+                    "type": "file",
+                    "path": "yahoo.py"
+                },
+                {
+                    "type": "dir",
+                    "path": "assets/",
+                    "dest": "assets/"
+                }
+            ]
+        }
+    ]
+}
