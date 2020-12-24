@@ -22,6 +22,10 @@
                 "install -D yahoo.py /app/bin/yahoo.py",
                 "cp -a assets /app/bin/"
             ],
+            "finish-args": [
+                "--share=network",
+                "--socket=wayland"
+            ],
             "sources": [
                 {
                     "type": "file",
