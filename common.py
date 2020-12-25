@@ -19,7 +19,7 @@ import yahoo
 CONFIGBASE = os.environ.get("HOME", "/tmp") + "/.config/weewxapp/"
 CACHEBASE = os.environ.get("HOME", "/tmp") + "/.cache/weewxapp/"
 # TODO: set this to /usr/share/weewxapp/
-APPBASE = os.environ.get("HOME", "/tmp") + "/weeWXWeatherApp4Gtk/"
+APPBASE = "/usr/share/weewxapp/"
 
 HEADERS = {}
 HEADERS['User-Agent'] = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "

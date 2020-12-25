@@ -57,7 +57,7 @@ NWS = {"bkn":"Y|L|Broken Clouds", "blizzard":"Y|L|Blizzard", "cold":"Y|L|Cold",
        "wind_sct":"Y|8|Windy\\/Scattered Clouds", "wind_skc":"N|8|Windy\\/Clear",
        "wind":"N|L|Windy\\/Clear (old)", "na":"N|L|Not Available"}
 
-FONT = ImageFont.FreeTypeFont("assets/Ubuntu-B.ttf", size=10)
+FONT = ImageFont.FreeTypeFont("/usr/share/weewxapp/assets/Ubuntu-B.ttf", size=10)
 
 def combine_images(bmp1, bmp2, fimg, simg, fnum, snum):
     """ Combine weather.gov images for forecast """
