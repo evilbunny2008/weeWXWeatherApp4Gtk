@@ -1,0 +1,1 @@
+to build the package run: dpkg-deb --build weewxapp
