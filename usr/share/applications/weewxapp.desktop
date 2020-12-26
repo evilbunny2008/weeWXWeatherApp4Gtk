@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=weeWx App
+Comment=weeWx Weather App 4 Gtk
+Exec=/usr/bin/python3 /usr/share/weewxapp/main.py %U
+Icon=/usr/share/pixmaps/weewxapp.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Network;Application;
