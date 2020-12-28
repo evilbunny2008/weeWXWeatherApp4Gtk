@@ -825,7 +825,7 @@ def loadForecast1():
 
     html = htmlheader()
 
-    html += doForecastBanner(fctype, ftime, desc, True)
+    html += doForecastBanner(fctype, ftime, desc, False)
 
     html += "<table style='width:100%;border:0px;'>"
 

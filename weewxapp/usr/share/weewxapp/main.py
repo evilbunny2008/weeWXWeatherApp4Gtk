@@ -27,7 +27,7 @@ base_uri = "file:///"
 class aboutScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="Test", application=app)
-        self.set_default_size(400, 600)
+        self.set_default_size(400, 650)
 
         header = Gtk.HeaderBar(title="About weeWx Weather App")
         header.set_show_close_button(False)
@@ -48,7 +48,7 @@ class aboutScreen(Gtk.ApplicationWindow):
 class settingsScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="weeWx App Settings", application=app)
-        self.set_default_size(400, 600)
+        self.set_default_size(400, 650)
 
         header = Gtk.HeaderBar(title="weeWx App Settings")
         header.set_show_close_button(False)
@@ -188,7 +188,7 @@ class settingsScreen(Gtk.ApplicationWindow):
 class mainScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="weeWX App", application=app)
-        self.set_default_size(400, 600)
+        self.set_default_size(400, 650)
 
         htmlheader = common.htmlheader()
         htmlfooter = common.htmlfooter()
