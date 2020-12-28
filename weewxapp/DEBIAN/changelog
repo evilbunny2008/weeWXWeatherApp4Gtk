@@ -1,3 +1,9 @@
+weewxapp (0.0.2) stable; urgency=medium
+
+  * Bug fixes in conversion code
+
+ -- evilbunny <evilbunny@evilbunny.org>  Fri, 28 Dec 2020 19:30:00 +1100
+
 weewxapp (0.0.1) stable; urgency=medium
 
   * Initial Release
