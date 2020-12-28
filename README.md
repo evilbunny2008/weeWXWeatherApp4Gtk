@@ -1,4 +1,4 @@
-## weeWXWeatherApp4UT -- A weather app for weeWX
+## weeWXWeatherApp4Gtk -- A weather app for weeWX
 
 Unlike general weather apps, which get data from third party websites, this app gets data from personal weather stations running weeWX.
 
