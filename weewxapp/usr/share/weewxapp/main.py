@@ -107,7 +107,7 @@ class settingsScreen(Gtk.ApplicationWindow):
         hbox.pack_start(label, False, False, 0)
 
         self.metric = Gtk.Switch()
-        if common.get_string("use_metric", "1") == "1":
+        if common.get_string("metric", "1") == "1":
             self.metric.set_active(True)
         hbox.pack_end(self.metric, False, True, 0)
 
