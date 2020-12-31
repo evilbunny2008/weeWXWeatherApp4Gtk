@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import gi
+import threading
 import common
 
 gi.require_version('Gtk', "3.0")
@@ -175,11 +176,9 @@ class settingsScreen(Gtk.ApplicationWindow):
         wifi = self.wifi.get_active()
         update = self.interval.get_active()
 
-        ret = common.save_config(url, indoor, dark, metric, radar, icons, update, wifi)
-        if ret[0] is False:
-            return ret[1]
-
-        app.win.refresh_data()
+        my_thread = threading.Thread(target=do_save,
+                                     args=(url, indoor, dark, metric, radar, icons, update, wifi))
+        my_thread.start()
 
         self.destroy()
 
@@ -358,6 +357,14 @@ class Application(Gtk.Application):
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
+
+def do_save(url, indoor, dark, metric, radar, icons, update, wifi):
+
+    ret = common.save_config(url, indoor, dark, metric, radar, icons, update, wifi)
+    if ret[0] is False:
+        return ret[1]
+
+    app.win.refresh_data()
 
 if __name__ == "__main__":
     app = Application()

@@ -1,3 +1,9 @@
+weewxapp (0.0.4) stable; urgency=medium
+
+  * Put save settings in it's own thread 
+
+ -- evilbunny <evilbunny@evilbunny.org>  Thu, 31 Dec 2020 19:30:00 +1100
+
 weewxapp (0.0.3) stable; urgency=medium
 
   * Bug fix to make metric setting stick
