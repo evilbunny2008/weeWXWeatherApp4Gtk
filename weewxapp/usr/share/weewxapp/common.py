@@ -18,20 +18,19 @@ import yahoo
 
 CONFIGBASE = os.environ.get("HOME", "/tmp") + "/.config/weewxapp/"
 CACHEBASE = os.environ.get("HOME", "/tmp") + "/.cache/weewxapp/"
-# TODO: set this to /usr/share/weewxapp/
 APPBASE = "/usr/share/weewxapp/"
 
 HEADERS = {}
-HEADERS['User-Agent'] = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
-HEADERS['User-Agent'] += "(KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+HEADERS['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " + \
+                        "(KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
 
 SESSION = requests.Session()
 SESSION.headers = HEADERS
 
 INIGO_VERSION = 4000
 
-ICON_VERSION = 8
-ICON_URL = "https://github.com/evilbunny2008/weeWXWeatherApp/releases/download/0.8.21/icons.zip"
+ICON_VERSION = 10
+ICON_URL = "https://github.com/evilbunny2008/weeWXWeatherApp/releases/download/0.8.25/icons.zip"
 
 def download(url):
     """ Download json string from server based on a bounding box """
@@ -73,8 +72,8 @@ def download(url):
         ret[1] = ret[1].encode("utf8")
         os.remove(CACHEBASE + "/tempfile.txt")
         return ret
-    else:
-        return [False, "Unknown URL handle, can't continue, url: '" + url + "'"]
+
+    return [False, "Unknown URL handle, can't continue, url: '" + url + "'"]
 
 def check_paths():
     """ check and make directories as needed. """
