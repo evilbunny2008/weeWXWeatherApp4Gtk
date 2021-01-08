@@ -25,10 +25,14 @@ INTERVALS = ["Manual Updates",
 iw = "18"
 base_uri = "file:///"
 
+ICON_FILE = "/usr/share/pixmaps/weewxapp.png"
+
 class aboutScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="Test", application=app)
         self.set_default_size(400, 650)
+
+        self.set_icon_from_file(ICON_FILE)
 
         header = Gtk.HeaderBar(title="About weeWx Weather App")
         header.set_show_close_button(False)
@@ -50,6 +54,8 @@ class settingsScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="weeWx App Settings", application=app)
         self.set_default_size(400, 650)
+
+        self.set_icon_from_file(ICON_FILE)
 
         header = Gtk.HeaderBar(title="weeWx App Settings")
         header.set_show_close_button(False)
@@ -188,6 +194,8 @@ class mainScreen(Gtk.ApplicationWindow):
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(self, title="weeWX App", application=app)
         self.set_default_size(400, 650)
+
+        self.set_icon_from_file(ICON_FILE)
 
         htmlheader = common.htmlheader()
         htmlfooter = common.htmlfooter()

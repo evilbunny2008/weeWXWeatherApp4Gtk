@@ -1,3 +1,9 @@
+weewxapp (0.0.6) stable; urgency=medium
+
+  * Set the app icon at runtime
+
+ -- evilbunny <evilbunny@evilbunny.org>  Fri, 8 Jan 2021 14:00:00 +1100
+
 weewxapp (0.0.5) stable; urgency=medium
 
   * Updated user agent string
